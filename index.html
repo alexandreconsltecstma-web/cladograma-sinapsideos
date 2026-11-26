@@ -778,7 +778,7 @@
         .intro-dica { color: var(--ink-2); font-size: 0.95rem; }
         @media (max-width: 800px) { .no-label { font-size: 1.1rem; } .tooltip-texto { font-size: 0.92rem; } }
         /* abertura: rótulos afastados para não se encostarem */
-        .evo-line { max-width: 640px; }
+        .evo-line { max-width: 640px; height: 330px; }
         .evo-base { left: 0; }
         .evo-mammal { right: 0; }
         .evo-arrow { left: 42%; width: 16%; }
@@ -806,6 +806,10 @@
             .btn-explorar { font-size: 0.62rem; padding: 0.9rem 1rem; }
         }
         @keyframes marchaV { to { background-position: 0 14px; } }
+        /* ===== TEXTO DO BALÃO LEGÍVEL (fonte de leitura, não pixel) ===== */
+        .speech-bubble { font-family: "Courier New", Courier, monospace; font-size: 0.98rem; line-height: 1.55; font-weight: 600; color: #1a1a2e; padding: 0.8rem 0.95rem; }
+        .speech-bubble strong { font-family: inherit; }
+        @media (max-width: 600px) { .speech-bubble { font-size: 0.92rem; } }
 </style>
 </head>
 <body>
