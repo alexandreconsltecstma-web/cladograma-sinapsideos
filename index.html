@@ -450,7 +450,7 @@
         .no-gravidios { left: 50%; bottom: 250px; }
         .no-marsupiais { left: 22%; bottom: 330px; }
         .no-afrotheria { left: 50%; bottom: 410px; }
-        .no-primatas { left: 20%; bottom: 520px; }
+        .no-primatas { left: 20%; bottom: 500px; }
         .no-roedores { left: 74%; bottom: 540px; }
         .no-laurasiatheria { left: 50%; bottom: 640px; }
         .no-chiroptera { left: 76%; bottom: 680px; }
@@ -462,7 +462,7 @@
         .no-feliformes { left: 68%; bottom: 940px; }
         .ramo-monot { left: 50%; width: 26%; bottom: 148px; }
         .ramo-marsu { left: 22%; width: 28%; bottom: 328px; }
-        .ramo-primat { left: 20%; width: 30%; bottom: 518px; }
+        .ramo-primat { left: 20%; width: 30%; bottom: 498px; }
         .ramo-roed { left: 50%; width: 24%; bottom: 538px; }
         .ramo-chiro { left: 50%; width: 26%; bottom: 678px; }
         .ramo-eulipo { left: 50%; width: 38%; bottom: 718px; }
@@ -709,6 +709,80 @@
             .tooltip-imgs img { width: 104px; height: 90px; }
             .tooltip-caract img { height: 64px; max-width: 92px; }
         }
+
+        /* ===== TEMA RETRÔ CLARO (fundo claro, texto mais legível; mesma estrutura e textos) ===== */
+        :root { --ink: #1a1a2e; --ink-2: #3d4a63; --roxo: #5b2bd6; --rosa: #ff4fd8; --ciano: #13a8c9; --verde: #2fbf71; --amarelo: #ffd23f; --papel: #ffffff; }
+        body { background-color: #f3f0ff; background-image: linear-gradient(rgba(91,43,214,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(91,43,214,0.10) 1px, transparent 1px); color: var(--ink); font-size: 17px; }
+        body::after { background: repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0 2px, transparent 2px 4px); }
+        body::before { background: radial-gradient(ellipse at center, transparent 60%, rgba(91,43,214,0.12) 100%); }
+        #starfield { opacity: 0.35; }
+        header h1 { color: var(--roxo); -webkit-text-fill-color: var(--roxo); text-shadow: 3px 3px 0 var(--rosa); font-size: 1.7rem; }
+        header p, header p.instrucao-topo { color: var(--ink-2); font-size: 1.02rem; line-height: 1.5; }
+        .cladograma-wrapper {
+            background-color: #ffffff; background-image: linear-gradient(rgba(91,43,214,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(91,43,214,0.07) 1px, transparent 1px);
+            border: 3px solid var(--roxo); box-shadow: 0 0 0 4px #f3f0ff, 0 0 0 7px var(--rosa), 0 14px 30px rgba(91,43,214,0.15);
+        }
+        .cladograma-wrapper::before, .cladograma-wrapper::after { border-color: var(--roxo); }
+        .tronco { background: linear-gradient(to top, var(--rosa), var(--ciano)); box-shadow: 0 0 8px rgba(255,79,216,0.5); }
+        .ramo { background: var(--ciano); box-shadow: 0 0 6px rgba(19,168,201,0.45); height: 4px; }
+        .no-bola { background: radial-gradient(circle at 35% 35%, #ffffff, #7ef0b2 45%, var(--verde) 100%); border: 3px solid var(--ink); box-shadow: 0 0 0 2px var(--verde), 0 2px 0 var(--ink); }
+        .no.raiz .no-bola { background: radial-gradient(circle at 35% 35%, #ffffff, #c79bff 45%, var(--roxo) 100%); box-shadow: 0 0 0 2px var(--roxo), 0 2px 0 var(--ink); }
+        .no-label, .no.ordem .no-label, .no .no-label {
+            background: var(--papel); border: 2px solid var(--ciano); color: var(--ink);
+            box-shadow: 4px 4px 0 var(--ink); padding: 0.45rem 0.85rem;
+        }
+        .no.ordem .no-label { border-color: var(--verde); }
+        .no-label { font-size: 1.12rem; font-weight: 700; color: var(--ink); line-height: 1.35; }
+        .no .exemplos { color: var(--ink-2); font-size: 1rem; font-weight: 500; }
+        .no .caract { background: var(--amarelo); color: var(--ink); font-size: 1rem; font-weight: 700; border: 2px solid var(--ink); padding: 1px 8px; }
+        .no.raiz .no-label { background: var(--roxo); color: #ffffff; border-color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+        .no.raiz .no-label .caract { background: var(--amarelo); color: var(--ink); }
+        .no-label::before { background: linear-gradient(180deg, var(--rosa), var(--ciano)); }
+        .no:hover .no-label { border-color: var(--roxo); box-shadow: 0 0 0 3px rgba(91,43,214,0.25), 4px 4px 0 var(--ink); }
+        .casco-no { mix-blend-mode: normal; }
+        .tooltip { background: #ffffff; border: 3px solid var(--roxo); box-shadow: 6px 6px 0 var(--ink); color: var(--ink); }
+        .tooltip::after { border-right-color: #ffffff; }
+        .tooltip::before { border-right-color: var(--roxo); }
+        .no.tooltip-left .tooltip::after { border-left-color: #ffffff; }
+        .no.tooltip-left .tooltip::before { border-left-color: var(--roxo); }
+        .tooltip-titulo { color: var(--roxo); font-size: 0.78rem; }
+        .tooltip-texto { color: var(--ink); font-size: 0.98rem; line-height: 1.5; }
+        .tooltip-texto strong { color: #0a8f5b; }
+        .tooltip-imgs img, .tooltip-caract img { background: #ffffff; border: 2px solid var(--ciano); box-shadow: 3px 3px 0 var(--ink); }
+        .como-ler div { background: #ffffff; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); color: var(--ink); font-size: 1.02rem; line-height: 1.55; }
+        .como-ler strong { color: var(--roxo); font-size: 0.8rem; }
+        .como-ler .bolinha { background: var(--verde); box-shadow: 0 0 0 2px var(--ink); }
+        .como-ler .linha { background: var(--ciano); }
+        .legenda { color: var(--ink-2); font-size: 0.98rem; }
+        footer p { color: var(--ink-2); font-size: 0.95rem; }
+        .help-btn { background: var(--roxo); color: #ffffff; border-color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+        .help-tooltip { background: #ffffff; border: 3px solid var(--roxo); color: var(--ink); box-shadow: 6px 6px 0 var(--ink); font-size: 0.95rem; }
+        .help-tooltip strong { color: var(--roxo); }
+        /* abertura clara */
+        #intro-page { background-color: #f3f0ff; background-image: linear-gradient(rgba(91,43,214,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(91,43,214,0.10) 1px, transparent 1px); }
+        #intro-page::after { background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0 2px, transparent 2px 4px); }
+        .intro-container { background: #ffffff; box-shadow: 0 0 0 4px #f3f0ff, 0 0 0 8px var(--roxo), 0 14px 40px rgba(91,43,214,0.2); color: var(--ink); }
+        .intro-container h1 { color: var(--roxo); -webkit-text-fill-color: var(--roxo); text-shadow: 2px 2px 0 var(--rosa); font-size: 1.1rem; }
+        .intro-container .subtitulo { color: var(--ink-2); font-size: 1.02rem; font-family: "Courier New", monospace; }
+        .grafico-wrapper { background: #ffffff; border: 3px solid var(--ciano); box-shadow: inset 0 0 0 3px #ffffff, inset 0 0 0 5px rgba(19,168,201,0.2); }
+        .grafico-titulo { color: var(--roxo); font-size: 0.6rem; }
+        .speech-bubble { font-size: 0.9rem; color: var(--ink); background: #fff8e1; }
+        .speech-bubble strong { color: #c2185b; }
+        .evo-base .label { background: var(--rosa); color: var(--ink); font-size: 0.6rem; }
+        .evo-mammal .label { background: var(--ciano); color: var(--ink); font-size: 0.6rem; }
+        .evo-base .label small, .evo-mammal .label small { font-size: 0.85rem; color: var(--ink); }
+        .evo-arrow { background: repeating-linear-gradient(90deg, var(--roxo) 0 10px, transparent 10px 16px); background-size: 16px 8px; }
+        .evo-arrow::after { border-left-color: var(--roxo); }
+        .btn-explorar { background: var(--verde); color: var(--ink); border: 3px solid var(--ink); box-shadow: 0 6px 0 var(--ink); font-size: 0.8rem; }
+        .btn-explorar:active { box-shadow: 0 2px 0 var(--ink); }
+        .intro-dica { color: var(--ink-2); font-size: 0.95rem; }
+        @media (max-width: 800px) { .no-label { font-size: 1.1rem; } .tooltip-texto { font-size: 0.92rem; } }
+        /* abertura: rótulos afastados para não se encostarem */
+        .evo-line { max-width: 640px; }
+        .evo-base { left: 0; }
+        .evo-mammal { right: 0; }
+        .evo-arrow { left: 42%; width: 16%; }
+        .evo-base .label small, .evo-mammal .label small { font-size: 0.8rem; white-space: nowrap; }
 </style>
 </head>
 <body>
