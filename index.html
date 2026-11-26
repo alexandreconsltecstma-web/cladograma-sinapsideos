@@ -787,6 +787,25 @@
         .no .casco-no { position: absolute; height: 46px; width: auto; right: 10px; top: 50%; transform: translateY(-50%); margin: 0; }
         .no-artiodactyla .no-label, .no-perissodactyla .no-label { padding-right: 72px !important; }
         @media (min-width: 801px) { .cladograma-wrapper { overflow: visible; } }
+        /* ===== ABERTURA NO CELULAR: empilhada, sem sobreposição ===== */
+        @media (max-width: 600px) {
+            .evo-line { height: auto; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+            .char-area { position: relative; flex-direction: column; align-items: center; gap: 10px; }
+            .char-area img { width: 64px; }
+            .speech-bubble { max-width: 100%; width: 100%; font-size: 0.82rem; }
+            .speech-bubble::after, .speech-bubble::before { display: none; }
+            .evo-base, .evo-mammal { position: relative; left: auto; right: auto; bottom: auto; animation: aparecer 0.5s steps(4) 0.6s both; }
+            .evo-base .label, .evo-mammal .label { white-space: normal; text-align: center; font-size: 0.5rem; }
+            .evo-base .label small, .evo-mammal .label small { white-space: normal; font-size: 0.75rem; }
+            .evo-arrow { position: relative; left: auto; bottom: auto; width: 10px; height: 36px; background: repeating-linear-gradient(180deg, var(--roxo) 0 8px, transparent 8px 14px); background-size: 10px 14px; animation: marchaV 0.6s steps(4) infinite; }
+            .evo-arrow::after { right: -4px; top: auto; bottom: -12px; border: 9px solid transparent; border-left-color: transparent; border-top-color: var(--roxo); }
+            .intro-container { padding: 1.4rem 1rem 1.2rem; }
+            .intro-container h1 { font-size: 0.85rem; }
+            .intro-container .subtitulo { font-size: 0.9rem; }
+            .intro-dica { font-size: 0.85rem; }
+            .btn-explorar { font-size: 0.62rem; padding: 0.9rem 1rem; }
+        }
+        @keyframes marchaV { to { background-position: 0 14px; } }
 </style>
 </head>
 <body>
