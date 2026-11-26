@@ -645,9 +645,49 @@
         .help-tooltip { background: #16132e; border: 2px solid #3ee7ff; border-radius: 0; box-shadow: 6px 6px 0 #000; color: #cfe9ff; }
         .help-tooltip strong { color: #ffd23f; }
         #intro-page .grafico-wrapper, #intro-page .intro-container h1 { font-family: "Press Start 2P", monospace; }
+
+        /* ===== POLIMENTO ARCADE (só visual) ===== */
+        #starfield { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; image-rendering: pixelated; }
+        .container { position: relative; z-index: 1; }
+        body::before {
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 899;
+            background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+            animation: tremor 4s steps(1) infinite;
+        }
+        @keyframes tremor { 0%{opacity:1} 20%{opacity:.92} 40%{opacity:1} 70%{opacity:.95} 100%{opacity:1} }
+        .cladograma-wrapper { position: relative; animation: ligar 0.9s steps(8) both; }
+        @keyframes ligar { 0% { filter: brightness(2) saturate(0); opacity: 0; } 100% { filter: none; opacity: 1; } }
+        .cladograma-wrapper::before, .cladograma-wrapper::after {
+            content: ""; position: absolute; width: 18px; height: 18px; pointer-events: none; z-index: 60;
+            border: 3px solid #ffd23f;
+        }
+        .cladograma-wrapper::before { top: -12px; left: -12px; border-right: 0; border-bottom: 0; }
+        .cladograma-wrapper::after { bottom: -12px; right: -12px; border-left: 0; border-top: 0; }
+        header h1 { animation: brilhoTitulo 2.4s steps(4) infinite; }
+        @keyframes brilhoTitulo { 0%,100% { text-shadow: 3px 3px 0 #ff4fd8; } 50% { text-shadow: 3px 3px 0 #ff4fd8, 0 0 18px rgba(255,210,63,0.7); } }
+        .no-bola::after {
+            content: ""; position: absolute; left: -10px; top: -10px; right: -10px; bottom: -10px;
+            border: 2px solid #5cff9d; opacity: 0; pointer-events: none;
+        }
+        .no:hover .no-bola::after { animation: anel 0.9s steps(4) infinite; }
+        @keyframes anel { 0% { opacity: 1; transform: scale(0.6); } 100% { opacity: 0; transform: scale(1.9); } }
+        .no-label { transition: transform 0.2s steps(3), box-shadow 0.2s steps(3); }
+        .no.lab-left:hover .no-label, .no.lab-right:hover .no-label { transform: translateY(calc(-50% - 3px)); }
+        .no.lab-below:hover .no-label { transform: translateX(-50%) translateY(-3px); }
+        .no.lab-above:hover .no-label { transform: translateX(-50%) translateY(-3px); }
+        .como-ler div { animation: subir 0.6s steps(4) both; }
+        .como-ler div:nth-child(2) { animation-delay: 0.15s; }
+        .como-ler div:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes subir { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+        .legenda { animation: piscar 2s steps(2) infinite; }
+        footer p { letter-spacing: 0.04em; }
+        @media (prefers-reduced-motion: reduce) {
+            body::before, header h1, .cladograma-wrapper, .como-ler div, .legenda, .no:hover .no-bola::after { animation: none; }
+        }
 </style>
 </head>
 <body>
+<canvas id="starfield"></canvas>
 <div id="intro-page">
 <div class="intro-container">
 <h1>Cladograma dos Sinapsídeos</h1>
@@ -1046,6 +1086,20 @@ document.addEventListener('click', function(){
         el.classList.add('anim');
         el.style.setProperty('--d', (0.3 + i * 0.18) + 's');
     });
+})();
+</script>
+<script>
+// Fundo de estrelas pixeladas (leve, para na aba oculta e com movimento reduzido)
+(function(){
+    var c = document.getElementById('starfield'); if (!c) return;
+    var ctx = c.getContext('2d'), stars = [], W, H, reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function ajusta(){ W = c.width = Math.floor(innerWidth/3); H = c.height = Math.floor(innerHeight/3); stars = []; for (var i=0;i<90;i++) stars.push({x:Math.random()*W,y:Math.random()*H,v:0.05+Math.random()*0.25,c:['#ffffff','#3ee7ff','#ff4fd8','#ffd23f'][i%4]}); }
+    function passo(){
+        ctx.clearRect(0,0,W,H);
+        stars.forEach(function(st){ if(!reduz) st.y += st.v; if (st.y > H) { st.y = 0; st.x = Math.random()*W; } ctx.fillStyle = st.c; ctx.fillRect(Math.floor(st.x), Math.floor(st.y), 1, 1); });
+        if(!reduz) requestAnimationFrame(passo);
+    }
+    ajusta(); passo(); addEventListener('resize', function(){ ajusta(); passo(); });
 })();
 </script>
 </body>
